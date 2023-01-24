@@ -37,7 +37,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _es6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./es6.js */ \"./src/es6.js\");\nconsole.log('hello webpack');\r\nconst common = __webpack_require__(/*! ./common.js */ \"./src/common.js\");\r\ncommon.hello('hello');\r\n\r\n_es6_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].hello('hello');\r\n\n\n//# sourceURL=webpack://learnwebpack/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _es6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./es6.js */ \"./src/es6.js\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './style.css'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nconsole.log('hello webpack');\r\nconst common = __webpack_require__(/*! ./common.js */ \"./src/common.js\");\r\ncommon.hello('hello');\r\n\r\n_es6_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].hello('hello');\r\n\n\n//# sourceURL=webpack://learnwebpack/./src/index.js?");
 
 /***/ })
 
