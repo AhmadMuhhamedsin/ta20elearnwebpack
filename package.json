@@ -7,7 +7,9 @@
     "dev": "rm -rf dist && webpack --mode development",
     "build": "rm -rf dist && webpack --mode production",
     "watch": "npm run dev -- --watch",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development",
+    "deploy": "npm run build && surge ./dist https://ajar-work.surge.sh/",
+    "githubio": "npm run build && git clone https://github.com/AhmadMuhhamedsin/AhmadMuhhamedsin.github.io.git github && rm -rf github/*.html && rm -rf github/*.js && cp ./dist/* github && cd github && git add . && git commit -m 'update' && git push && cd .. && rm -rf github"
   },
   "repository": {
     "type": "git",
@@ -21,14 +23,18 @@
   },
   "homepage": "https://github.com/Kasparsu/ta20elearnwebpack#readme",
   "devDependencies": {
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
+    "nunjucks-loader": "^3.0.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "sync-fetch": "^0.4.2"
   }
 }

@@ -1,14 +1,20 @@
 const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const fetch = require('sync-fetch')
 
-console.log(glob.sync('./src/views/*'))
-glob.sync('./src/views/*').map(path =>  {
+      
+ let htmlPlugins = glob.sync('./src/views/*', {nodir:true}).map(templatePath => {
+  let res = fetch('https://api.chucknorris.io/jokes/random') 
   return new HtmlWebpackPlugin({
     template: templatePath,
-    filename: path.parse(templatePath).name + '.html'
+    filename: path.parse(templatePath).name + '.html',
+    templateParameters: {
+      hello: 'some cool variable',
+      joke:res.json().value
+    }
   })
-})
+ })
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -34,21 +40,22 @@ module.exports = {
       },
       {
         test:/\.(njk|nunjucks)$/i,
-        use:["nunjucks-loader"]
+        use:["simple-nunjucks-loader"]
       },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-        title: "My app",
-        template:"./views/index.html",
-      }),
+    ...htmlPlugins
+    // new HtmlWebpackPlugin({
+    //     title: "My app",
+    //     template:"./views/index.html",
+    //   }),
 
     
-    new HtmlWebpackPlugin({
-      title: "My app",
-      filename:'index.html',
-      template:"./views/index.html",
-    })
+    // new HtmlWebpackPlugin({
+    //   title: "My app",
+    //   filename:'index.html',
+    //   template:"./views/index.html",
+    // })
   ]
 };
